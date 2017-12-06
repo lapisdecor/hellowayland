@@ -1,0 +1,22 @@
+name: hellowayland
+version: 'master'
+summary: Test python3 with gtk3 in a snap on wayland
+description: |
+  This snap tests a helloworld program written in python3 and Gtk3 on Wayland
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  hellowayland:
+    command: desktop-launch $SNAP/bin/hellowayland
+    plugs: [x11, unity7, wayland, desktop]
+
+parts:
+  hellowayland:
+    source: .
+    # See 'snapcraft plugins'
+    plugin: python
+    stage-packages:
+      - python3-gi
+      - libcanberra-gtk3-module
+      - gir1.2-gtk-3.0
