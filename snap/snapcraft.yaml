@@ -20,3 +20,4 @@ parts:
       - python3-gi
       - libcanberra-gtk3-module
       - gir1.2-gtk-3.0
+    after: [desktop-gtk3]
