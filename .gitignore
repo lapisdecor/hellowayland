@@ -102,3 +102,4 @@ ENV/
 
 # snap file
 *.snap
+*.tar.bz2
