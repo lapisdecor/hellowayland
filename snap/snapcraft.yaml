@@ -12,6 +12,13 @@ apps:
     plugs: [x11, unity7, wayland, desktop]
 
 parts:
+  gnome-3-26:
+    before: [desktop-gtk3]
+    plugin: nil
+    prepare: |
+      add-apt-repository -y ppa:ubuntu-desktop/gnome-3-26
+      apt-get update && apt-get upgrade
+
   hellowayland:
     source: .
     # See 'snapcraft plugins'
@@ -20,5 +27,4 @@ parts:
       - python3-gi
       - libcanberra-gtk3-module
       - gir1.2-gtk-3.0
-      - libc6
-    after: [desktop-gtk3]
+    after: [gnome-3-26, desktop-gtk3]
