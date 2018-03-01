@@ -12,7 +12,18 @@ apps:
     plugs: [x11, unity7, wayland, desktop]
 
 parts:
+  gnome-3-26:
+    plugin: nil
+    prepare: |
+      add-apt-repository -y ppa:ubuntu-desktop/gnome-3-26
+      apt-get update
+      apt-get upgrade -yqq
+
+  desktop-gtk3:
+    after: [gnome-3-26]
+
   hellowayland:
+    after: [gnome-3-26, desktop-gtk3]
     source: .
     # See 'snapcraft plugins'
     plugin: python
@@ -20,9 +31,9 @@ parts:
       - python3-gi
       - libcanberra-gtk3-module
       - gir1.2-gtk-3.0
-    after: [desktop-gtk3]
 
 # For this to work on wayland at the moment you have to
-# use an LXD container or virtual machine and add the Gnome 3.26
+# include the gnome-3-26 part or you may remove it if you use an LXD container
+# or virtual machine and add the Gnome 3.26
 # PPA to the container and do an apt update and apt upgrade before
 # running snapcraft inside the container
