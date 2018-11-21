@@ -15,7 +15,7 @@ parts:
   gnome-3-26:
     plugin: nil
     override-pull: |
-      apt-get install software-properties-common
+      apt-get install software-properties-common -y
       add-apt-repository -y ppa:ubuntu-desktop/gnome-3-26
       apt-get update
       apt-get upgrade -yqq
