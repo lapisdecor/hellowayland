@@ -32,6 +32,8 @@ parts:
       - python3-gi
       - libcanberra-gtk3-module
       - gir1.2-gtk-3.0
+      - libgdk-pixbuf2.0-0
+      - libgdk-pixbuf2.0-dev
 
 # For this to work on wayland at the moment you have to
 # include the gnome-3-26 part or you may remove it if you use an LXD container
