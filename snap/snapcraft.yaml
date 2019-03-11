@@ -24,10 +24,14 @@ parts:
       apt-get upgrade -yqq
 
   desktop-gtk3:
-    after: [gnome-3-26]
+    after:
+      - gnome-3-26
 
   hellowayland:
-    after: [gnome-3-26, desktop-gtk3]
+    after:
+      - gnome-3-26
+      - desktop-gtk3
+
     source: .
     # See 'snapcraft plugins'
     plugin: python
