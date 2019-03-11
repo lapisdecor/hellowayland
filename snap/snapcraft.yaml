@@ -29,7 +29,7 @@ parts:
 #      - gnome-3-26
 
   hellowayland:
-    plugin: nil
+    # plugin: nil
     # after:
       # - gnome-3-26
       # - desktop-gtk3
