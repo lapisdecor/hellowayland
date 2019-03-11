@@ -5,6 +5,7 @@ description: |
   This snap tests a helloworld program written in python3 and Gtk3 on Wayland
 architectures:
   - amd64
+base: core18
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
