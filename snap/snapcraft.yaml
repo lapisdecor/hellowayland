@@ -24,10 +24,12 @@ parts:
       apt-get upgrade -yqq
 
   desktop-gtk3:
+    plugin: nil
     after:
       - gnome-3-26
 
   hellowayland:
+    plugin: nil
     after:
       - gnome-3-26
       - desktop-gtk3
