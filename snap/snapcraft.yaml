@@ -5,7 +5,6 @@ description: |
   This snap tests a helloworld program written in python3 and Gtk3 on Wayland
 architectures:
   - amd64
-base: core18
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
@@ -15,24 +14,23 @@ apps:
     plugs: [x11, unity7, wayland, desktop]
 
 parts:
-#  gnome-3-26:
-#    plugin: nil
-#    override-pull: |
-#      apt-get install software-properties-common -y
-#      add-apt-repository -y ppa:ubuntu-desktop/gnome-3-26
-#      apt-get update
-#      apt-get upgrade -yqq
+  gnome-3-26:
+    plugin: nil
+    override-pull: |
+      apt-get install software-properties-common -y
+      add-apt-repository -y ppa:ubuntu-desktop/gnome-3-26
+      apt-get update
+      apt-get upgrade -yqq
 
-#  desktop-gtk3:
-#    plugin: nil
-#    after:
-#      - gnome-3-26
+  desktop-gtk3:
+    plugin: nil
+    after:
+      - gnome-3-26
 
   hellowayland:
-    # plugin: nil
-    # after:
-      # - gnome-3-26
-      # - desktop-gtk3
+     after:
+       - gnome-3-26
+       - desktop-gtk3
 
     source: .
     # See 'snapcraft plugins'
