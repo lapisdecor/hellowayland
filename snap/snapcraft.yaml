@@ -10,8 +10,8 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 apps:
   hellowayland:
-    command: $SNAP/bin/hellowayland
-    # command: bin/desktop-launch $SNAP/bin/hellowayland
+    command: bin/hellowayland
+    # command: desktop-launch $SNAP/bin/hellowayland
     plugs: [x11, unity7, wayland, desktop]
 
 parts:
