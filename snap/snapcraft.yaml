@@ -8,17 +8,24 @@ architectures:
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
+apps:
+  hellowayland:
+    command: desktop-launch $SNAP/bin/hellowayland
+    plugs: [x11, unity7, wayland, desktop]
 
 parts:
-  gnome:
+  gnome-3-26:
     plugin: nil
-    build-packages:
-      - software-properties-common
     override-pull: |
+      apt-get install software-properties-common -y
       add-apt-repository -y ppa:ubuntu-desktop/gnome-3-26
-      apt -y update
-      apt -y upgrade
+      apt-get update
+      apt-get upgrade -yqq
+  desktop-gtk3:
+    after: [gnome-3-26]
+
   hellowayland:
+    after: [gnome-3-26, desktop-gtk3]
     source: .
     # See 'snapcraft plugins'
     plugin: python
@@ -28,17 +35,6 @@ parts:
       - gir1.2-gtk-3.0
       - libgdk-pixbuf2.0-0
       - libgdk-pixbuf2.0-dev
-    after:
-      - gnome
-      - desktop-gtk3
-
-
-apps:
-  hellowayland:
-    command: bin/hellowayland
-    # command: desktop-launch $SNAP/bin/hellowayland
-    plugs: [x11, unity7, wayland, desktop]
-
 
 # For this to work on wayland at the moment you have to
 # include the gnome-3-26 part or you may remove it if you use an LXD container
