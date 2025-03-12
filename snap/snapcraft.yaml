@@ -13,7 +13,6 @@ parts:
   hellowayland:
     # See 'snapcraft plugins'
     plugin: python
-    python-version: python3
     source: .
     stage-packages:
        - python3-gi
