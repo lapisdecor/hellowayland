@@ -4,7 +4,7 @@ version: 'master'
 summary: Test python3 with gtk3 in a snap on wayland
 description: |
   This snap tests a helloworld program written in python3 and Gtk3 on Wayland
-architectures:
+platforms:
   - amd64
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
